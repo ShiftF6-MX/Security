@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleObjectProperty;
 public class RolGrupoUsuario {
 	
 	//PROPIEDADES
-	private IntegerProperty sysPk;
+	private IntegerProperty sysPK;
 	private ObjectProperty<GrupoUsuario> grupoUsuario;
 	private ObjectProperty<Rol> rol;
   
@@ -17,22 +17,22 @@ public class RolGrupoUsuario {
 		this(0, new GrupoUsuario(), new Rol());
 	}//FIN CONSTRUCTOR
   
-	public RolGrupoUsuario(Integer sysPk, GrupoUsuario grupoUsuario, Rol rol) {
-		this.sysPk = new SimpleIntegerProperty(sysPk);
+	public RolGrupoUsuario(Integer sysPK, GrupoUsuario grupoUsuario, Rol rol) {
+		this.sysPK = new SimpleIntegerProperty(sysPK);
 		this.grupoUsuario = new SimpleObjectProperty<GrupoUsuario>(grupoUsuario);
 		this.rol = new SimpleObjectProperty<Rol>(rol);
 	}//FIN CONSTRUCTOR
 
-	public IntegerProperty sysPkProperty() {
-		return this.sysPk;
+	public IntegerProperty sysPKProperty() {
+		return this.sysPK;
 	}//FIN METODO	
 
-	public int getSysPk() {
-		return this.sysPkProperty().get();
+	public int getSysPK() {
+		return this.sysPKProperty().get();
 	}//FIN METODO	
 
-	public void setSysPk(final int sysPk) {
-		this.sysPkProperty().set(sysPk);
+	public void setSysPK(final int sysPK) {
+		this.sysPKProperty().set(sysPK);
 	}//FIN METODO	
 
 	public ObjectProperty<GrupoUsuario> grupoUsuarioProperty() {

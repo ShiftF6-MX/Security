@@ -8,7 +8,7 @@ import javafx.beans.property.StringProperty;
 public class GrupoUsuario {
 	
 	//PROPIEDADES
-	private IntegerProperty sysPk;
+	private IntegerProperty sysPK;
 	private StringProperty nombre;
 	private StringProperty descripcion;
   
@@ -17,23 +17,23 @@ public class GrupoUsuario {
 		this(0, "", "");
 	}//FIN CONSTRUCTOR
   
-	public GrupoUsuario(Integer sysPk, String nombre, String descripcion) {
-		this.sysPk = new SimpleIntegerProperty(sysPk);
+	public GrupoUsuario(Integer sysPK, String nombre, String descripcion) {
+		this.sysPK = new SimpleIntegerProperty(sysPK);
 		this.nombre = new SimpleStringProperty(nombre);
 		this.descripcion = new SimpleStringProperty(descripcion);
 	}//FIN CONSTRUCTOR
 
 	//METODOS
-	public IntegerProperty sysPkProperty() {
-		return this.sysPk;
+	public IntegerProperty sysPKProperty() {
+		return this.sysPK;
 	}//FIN METODO	
 
-	public int getSysPk() {
-		return this.sysPkProperty().get();
+	public int getSysPK() {
+		return this.sysPKProperty().get();
 	}//FIN METODO	
 
-	public void setSysPk(final int sysPk) {
-		this.sysPkProperty().set(sysPk);
+	public void setSysPK(final int sysPK) {
+		this.sysPKProperty().set(sysPK);
 	}//FIN METODO	
 
 	public StringProperty nombreProperty() {

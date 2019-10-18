@@ -10,7 +10,7 @@ import javafx.beans.property.StringProperty;
 public class Rol {
 	
 	//PROPIEDADES
-	private IntegerProperty sysPk;
+	private IntegerProperty sysPK;
 	private StringProperty codigoItem;
 	private StringProperty descripcion;
 	private BooleanProperty seleccionado;
@@ -20,24 +20,24 @@ public class Rol {
 		this(0, "", "", false);
 	}//FIN CONSTRUCTOR
   
-	public Rol(Integer sysPk, String codigoItem, String descripcion, boolean seleccionado) {
-		this.sysPk = new SimpleIntegerProperty(sysPk);
+	public Rol(Integer sysPK, String codigoItem, String descripcion, boolean seleccionado) {
+		this.sysPK = new SimpleIntegerProperty(sysPK);
 		this.codigoItem = new SimpleStringProperty(codigoItem);
 		this.descripcion = new SimpleStringProperty(descripcion);
 		this.seleccionado = new SimpleBooleanProperty(seleccionado);
 	}//FIN CONSTRUCTOR
 
 	//METODOS
-	public IntegerProperty sysPkProperty() {
-		return this.sysPk;
+	public IntegerProperty sysPKProperty() {
+		return this.sysPK;
 	}//FIN METODO	
 
-	public int getSysPk() {
-		return this.sysPkProperty().get();
+	public int getSysPK() {
+		return this.sysPKProperty().get();
 	}//FIN METODO	
 
-	public void setSysPk(final int sysPk) {
-		this.sysPkProperty().set(sysPk);
+	public void setSysPK(final int sysPK) {
+		this.sysPKProperty().set(sysPK);
 	}//FIN METODO	
 
 	public StringProperty codigoItemProperty() {
