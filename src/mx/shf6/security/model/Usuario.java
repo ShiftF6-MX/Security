@@ -15,7 +15,6 @@ public class Usuario {
 	private IntegerProperty sysPK;
 	private StringProperty usuario;
 	private StringProperty contrasena;
-	private StringProperty correoElectronico;
 	private ObjectProperty<Date> fechaRegistro;
 	private ObjectProperty<Date> fechaBloqueo;
 	private ObjectProperty<Status> status;
@@ -40,6 +39,19 @@ public class Usuario {
 			}//FIN SWITCH
 		}//FIN METODO
 		
+		public Integer toInteger() {
+			switch (this) {
+				case BLOQUEADO:
+					return 0;
+				case ACTIVO:
+					return 1;
+				case BAJA:
+					return 2;
+				default:
+					throw new AssertionError("Status desconocido" + this);
+			}//FIN SWITCH
+		}//FIN METODO
+		
 	}//FIN ENUM
   
 	//CONTRUCTORES
@@ -51,7 +63,6 @@ public class Usuario {
 		this.sysPK = new SimpleIntegerProperty(sysPK);
 		this.usuario = new SimpleStringProperty(usuario);
 		this.contrasena = new SimpleStringProperty(contrasena);
-		this.correoElectronico = new SimpleStringProperty(correoElectronico);
 		this.fechaRegistro = new SimpleObjectProperty<Date>(fechaRegistro);
 		this.fechaBloqueo = new SimpleObjectProperty<Date>(fechaBloqueo);
 		this.status = new SimpleObjectProperty<Status>(status);
@@ -95,18 +106,6 @@ public class Usuario {
 		this.contrasenaProperty().set(contrasena);
 	}//FIN METODO	
 
-	public StringProperty correoElectronicoProperty() {
-		return this.correoElectronico;
-	}//FIN METODO	
-
-	public String getCorreoElectronico() {
-		return this.correoElectronicoProperty().get();
-	}//FIN METODO	
-
-	public void setCorreoElectronico(final String correoElectronico) {
-		this.correoElectronicoProperty().set(correoElectronico);
-	}//FIN METODO	
-
 	public ObjectProperty<Date> fechaRegistroProperty() {
 		return this.fechaRegistro;
 	}//FIN METODO	
@@ -141,6 +140,19 @@ public class Usuario {
 
 	public void setStatus(final Status status) {
 		this.statusProperty().set(status);
+	}//FIN METODO
+	
+	public void setStatus(final Integer status) {
+		switch (status) {
+			case 0:
+				this.statusProperty().set(Status.BLOQUEADO);;
+			case 1:
+				this.statusProperty().set(Status.ACTIVO);;
+			case 2:
+				this.statusProperty().set(Status.BAJA);;
+			default:
+				throw new AssertionError("Opcion desconocida" + status);
+		}//FIN SWITCH
 	}//FIN METODO	
 
 	public ObjectProperty<GrupoUsuario> grupoUsuarioProperty() {
