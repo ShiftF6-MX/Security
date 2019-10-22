@@ -145,13 +145,13 @@ public class Usuario {
 	public void setStatus(final Integer status) {
 		switch (status) {
 			case 0:
-				this.statusProperty().set(Status.BLOQUEADO);;
+				this.statusProperty().set(Status.BLOQUEADO);
 			case 1:
-				this.statusProperty().set(Status.ACTIVO);;
+				this.statusProperty().set(Status.ACTIVO);
 			case 2:
-				this.statusProperty().set(Status.BAJA);;
+				this.statusProperty().set(Status.BAJA);
 			default:
-				throw new AssertionError("Opcion desconocida" + status);
+				throw new AssertionError("Opcion desconocida: " + status);
 		}//FIN SWITCH
 	}//FIN METODO	
 
