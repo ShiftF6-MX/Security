@@ -1,6 +1,8 @@
 package mx.shf6.security.model;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -22,9 +24,20 @@ public class Usuario {
   
 	//CONSTANTES	
 	public enum Status {
-		BLOQUEADO,
-		ACTIVO,
-		BAJA;
+		BLOQUEADO(0),
+		ACTIVO(1),
+		BAJA(-1);
+		
+		private int constante;
+		private static Map<Object, Object> map = new HashMap<>();
+		
+		private Status(int constante) {
+			this.constante = constante;
+		}//FIN CONSTRUCTOR
+		
+		public int getConstante() {
+			return this.constante;
+		}//FIN METODO
 		
 		public String toString() {
 			switch (this) {
@@ -39,19 +52,14 @@ public class Usuario {
 			}//FIN SWITCH
 		}//FIN METODO
 		
-		public Integer toInteger() {
-			switch (this) {
-				case BLOQUEADO:
-					return 0;
-				case ACTIVO:
-					return 1;
-				case BAJA:
-					return 2;
-				default:
-					throw new AssertionError("Status desconocido" + this);
-			}//FIN SWITCH
+		static {
+			for (Status status : Status.values())
+				map.put(status.constante, status);
 		}//FIN METODO
 		
+		public static Status valueOf(int status) {
+			return (Status) map.get(status);
+		}//FIN METODO		
 	}//FIN ENUM
   
 	//CONTRUCTORES
@@ -141,19 +149,6 @@ public class Usuario {
 	public void setStatus(final Status status) {
 		this.statusProperty().set(status);
 	}//FIN METODO
-	
-	public void setStatus(final Integer status) {
-		switch (status) {
-			case 0:
-				this.statusProperty().set(Status.BLOQUEADO);
-			case 1:
-				this.statusProperty().set(Status.ACTIVO);
-			case 2:
-				this.statusProperty().set(Status.BAJA);
-			default:
-				throw new AssertionError("Opcion desconocida: " + status);
-		}//FIN SWITCH
-	}//FIN METODO	
 
 	public ObjectProperty<GrupoUsuario> grupoUsuarioProperty() {
 		return this.grupoUsuario;
