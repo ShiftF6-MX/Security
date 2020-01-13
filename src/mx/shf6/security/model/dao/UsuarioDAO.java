@@ -27,7 +27,7 @@ public class UsuarioDAO {
 			preparedStatement.setString(2, usuario.getContrasena());
 			preparedStatement.setDate(4, usuario.getFechaRegistro());
 			preparedStatement.setDate(5, usuario.getFechaBloqueo());
-			preparedStatement.setInt(5, usuario.getStatus().toInteger());
+			preparedStatement.setInt(5, usuario.getStatus().getConstante());
 			preparedStatement.setInt(6, usuario.getGrupoUsuario().getSysPK());
 			preparedStatement.execute();
 			return true;
@@ -50,7 +50,7 @@ public class UsuarioDAO {
 				usuario.setContrasena(resultSet.getString("UsuarioContrasena"));
 				usuario.setFechaRegistro(resultSet.getDate("UsuarioFechaRegistro"));
 				usuario.setFechaBloqueo(resultSet.getDate("UsuarioFechaBloqueo"));
-				usuario.setStatus(resultSet.getInt("UsuarioStatus"));
+				usuario.setStatus(Usuario.Status.valueOf(resultSet.getInt("UsuarioStatus")));
 				GrupoUsuario grupoUsuario = new GrupoUsuario();
 				grupoUsuario.setSysPK(resultSet.getInt("UsuarioGrupoUsuarioSysPK"));
 				grupoUsuario.setNombre(resultSet.getString("UsuarioGrupoUsuarioNombre"));
@@ -72,7 +72,7 @@ public class UsuarioDAO {
   			preparedStatement.setString(2, usuario.getContrasena());
   			preparedStatement.setDate(3, usuario.getFechaRegistro());
   			preparedStatement.setDate(4, usuario.getFechaBloqueo());
-  			preparedStatement.setInt(5, usuario.getStatus().toInteger());
+  			preparedStatement.setInt(5, usuario.getStatus().getConstante());
   			preparedStatement.setInt(6, usuario.getGrupoUsuario().getSysPK());
   			preparedStatement.setInt(7, usuario.getSysPK());
   			preparedStatement.execute();
