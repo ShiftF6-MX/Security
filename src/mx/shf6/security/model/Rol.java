@@ -75,5 +75,10 @@ public class Rol {
 	public void setSeleccionado(final boolean seleccionado) {
 		this.seleccionadoProperty().set(seleccionado);
 	}//FIN METODO	
+	
+	@Override
+	public String toString() {
+		return this.getCodigoItem();
+	}//FIN METODO
   	
 }//FIN CLASE
